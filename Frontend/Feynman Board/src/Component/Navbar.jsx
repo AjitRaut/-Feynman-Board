@@ -3,27 +3,24 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [username, setUsername] = useState(localStorage.getItem("username")); // Track username in state
+  const [username, setUsername] = useState(localStorage.getItem("username"));
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // useEffect to update state if the username changes in localStorage
   useEffect(() => {
     const handleStorageChange = () => {
       setUsername(localStorage.getItem("username"));
     };
 
-    // Listen for changes to localStorage
     window.addEventListener("storage", handleStorageChange);
 
-    // Cleanup listener on component unmount
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
 
   return (
-    <nav className="bg-blue-600 text-white p-4 shadow-md">
+    <nav className="bg-blue-600 text-white p-4 shadow-md fixed w-full top-0 left-0 z-50">
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo Section */}
         <div className="text-lg font-bold">
@@ -34,12 +31,11 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
-          {username && ( // Conditionally render the link based on login status
+          {username && (
             <Link to="/dashboard" className="hover:text-gray-200 transition duration-300">
               Dashboard
             </Link>
           )}
-          {/* Add more links as needed */}
         </div>
 
         {/* Mobile Menu Button */}
@@ -66,16 +62,15 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div className={`md:hidden ${isOpen ? "block" : "hidden"} mt-2`}>
-        {username && ( // Conditionally render the link based on login status
+        {username && (
           <Link
             to="/dashboard"
             className="block px-4 py-2 text-white hover:bg-blue-700 transition duration-300"
-            onClick={toggleMenu} // Close menu on item click
+            onClick={toggleMenu}
           >
             Dashboard
           </Link>
         )}
-        {/* Add more links as needed */}
       </div>
     </nav>
   );
