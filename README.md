@@ -30,6 +30,7 @@ Check out the live project: [Feynman Board](https://feynman-board-esawymgre-ajit
 2. Navigate to the project directory:
 
     ```bash
+    cd Frontend
     cd feynman-board
     ```
 
@@ -49,8 +50,9 @@ Check out the live project: [Feynman Board](https://feynman-board-esawymgre-ajit
 5. Start the frontend development server:
 
     ```bash
-    cd client
-    npm start
+    cd Fronten
+    cd feynman-board
+    npm run dev
     ```
 
 6. Open the app in your browser:
