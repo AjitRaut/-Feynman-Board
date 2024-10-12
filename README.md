@@ -74,4 +74,30 @@ Check out the live project: [Feynman Board](https://feynman-board-esawymgre-ajit
 ├── .gitignore         # Ignored files
 ├── README.md          # Project documentation
 └── package.json       # Node.js dependencies and scripts
+```
 
+## Database Design
+
+- **User**: Stores user information such as username.
+- **Topic**: Stores the topics created by the user.
+- **Block**: Stores each block of content from the topic, categorized based on user understanding.
+
+## Functionality
+
+1. **Landing Page**: Enter the username and navigate to the dashboard.
+2. **Dashboard**: Lists all topics created by the user and displays progress as percentages.
+3. **Add Topic**: Users can add a new topic, type content in the text editor, and categorize each block based on their understanding.
+4. **Block Categorization**: Automatically splits text into blocks using the following delimiters: `,` `.` `()` `{}` `[]` `\` `|` `?` `:` `;` `/` and newline.
+
+## Understanding Calculation
+
+The understanding percentage is calculated using the following formula:
+
+```bash
+(Sum of points from each block / Total blocks * 4) * 100
+```
+
+- 1 Point: **What Rubbish**
+- 2 Points: **Not Clear**
+- 3 Points: **Somewhat Understood**
+- 4 Points: **Understood**
